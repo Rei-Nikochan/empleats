@@ -1,0 +1,46 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <span class="h3">Llistat d'empleats</span>
+      <h5 *ngIf="empleats.length == 0" style="margin-top: 20px">
+        No hi ha cap element a mostrar
+      </h5>
+      <button
+        class="btn btn-dark btn-sm float-end"
+        routerLink="/create-empleat"
+      >
+        Agregar
+      </button>
+      <table *ngIf="empleats.length > 0" class="table table-striped mt-4">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Cognom</th>
+            <th>DNI</th>
+            <th>Salari</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let empleat of empleats">
+            <td>{{ empleat.nom | titlecase }}</td>
+            <td>{{ empleat.cognom | titlecase }}</td>
+            <td>{{ empleat.dni }}</td>
+            <td>{{ empleat.salari | currency }}</td>
+            <td>
+              <i
+                class="far fa-edit fa-lg text-info"
+                style="margin-right: 3px"
+                [routerLink]="['/edit/', empleat.id]"
+              ></i>
+              <i
+                (click)="eliminarEmpleat(empleat.id)"
+                class="far fa-trash-alt fa-lg text-danger"
+              ></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

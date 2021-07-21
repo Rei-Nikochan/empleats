@@ -1,0 +1,42 @@
+<div class="container pt-3">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h3>{{ nomSeccio }}
+                        <!-- ? Spinner -->
+                        <div *ngIf="loadSpinner" class="spinner-border float-end" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </h3>
+                    
+                    <span *ngIf="submitted && createEmpleat.invalid" class="badge bg-danger">
+                        Tots els camps son requerits
+                    </span>
+                    <form class="mt-4" [formGroup]="createEmpleat" (ngSubmit)="AgregarModificarEmpleat()">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" formControlName="nom"
+                                class="form-control" placeholder="Nom...">
+                            </div>
+                            <div class="col">
+                                <input type="text" formControlName="cognom"
+                                class="form-control" placeholder="Cognom...">
+                            </div>
+                        </div>
+                        <input type="text" formControlName="dni"
+                        class="form-control mt-3" placeholder="DNI...">
+                        <input type="number" formControlName="salari" 
+                        class="form-control mt-3" placeholder="Salari...">
+                        <div class="mt-3">
+                            <button type="text" class="btn btn-secondary m-3"
+                            routerLink="list-empleats"
+                            >Enrera</button>
+                            <button type="submit" class="btn btn-dark">{{ nomBoto }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
